@@ -1,6 +1,6 @@
 # to write value1 and value2 to sam.txt :
-# hrassi.pythonanywhere.com/sensor1?value1=123
-# hrassi.pythonanywhere.com/sensor2?value2=456
+# ******.pythonanywhere.com/sensor1?value1=123
+# ******.pythonanywhere.com/sensor2?value2=456
 
 """
 from flask import Flask
@@ -57,14 +57,14 @@ def sensores():
     tempo1 = str(request.args.get('value1'))
 
     # Read existing content from data.txt
-    with open("/home/Hrassi/sam.txt", "r") as file:
+    with open("/home/******/sam.txt", "r") as file:
         lines = file.readlines()
 
     # Modify only the first line with the new tempo value
     lines[0] = tempo1 + '\n'
 
     # Write the modified content back to data.txt
-    with open("/home/Hrassi/sam.txt", "w") as file:
+    with open("/home/******/sam.txt", "w") as file:
         file.writelines(lines)
 
     return "Data 1 received"
@@ -75,14 +75,14 @@ def sensores2():
     tempo2 = str(request.args.get('value2'))
 
     # Read existing content from data.txt
-    with open("/home/Hrassi/sam.txt", "r") as file:
+    with open("/home/******/sam.txt", "r") as file:
         lines = file.readlines()
 
     # Modify only the first line with the new tempo value
     lines[1] = tempo2 + '\n'
 
     # Write the modified content back to data.txt
-    with open("/home/Hrassi/sam.txt", "w") as file:
+    with open("/home/******/sam.txt", "w") as file:
         file.writelines(lines)
 
     return "Data 2 received"
