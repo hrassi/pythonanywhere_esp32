@@ -1,6 +1,7 @@
 #for py3board 5 leds , 5 push buttons , 1 potentiometer and 3 slots:lcd,i2c,spi
 # *****.pythonanywhere.com acount with sam.txt file to store variables to control
 # py3board , with flask_app for mobile interface user https://******.pythonanywhere.com
+# and will send whatsapp notification with callmebot
 
 import network
 import urequests
