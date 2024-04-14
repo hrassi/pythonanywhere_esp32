@@ -1,3 +1,4 @@
+#copy this file to pythonanywhere drive *****/mysite/flask_app  and rename to flask_app
 # to write value1 and value2 to sam.txt :
 # ******.pythonanywhere.com/sensor1?value1=123
 # ******.pythonanywhere.com/sensor2?value2=456
