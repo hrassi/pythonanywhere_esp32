@@ -22,6 +22,10 @@ https://******.pythonanywhere.com  to access the sever
 
 then goto web tab in pythonanywere and create new app inside ******/mysite
 
+the main.py is a micropython script to run on esp32 . the esp32 is connected to 4 leds 
+to reflect the status of values in sam.txt and conected to a push button and potentiometer
+to put there values in the sam.txt
+
 explication of sam.txt:
 first line      value label 1       vars: value1
 second line     value label 2        vars: value2
