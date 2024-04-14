@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Sam's app</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            margin-top: 50px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            text-align: center;
+        }
+        .button {
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+            border: none;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        .button-active {
+            background-color: #45a049 !important;
+        }
+        .button-inactive {
+            background-color: darkgray !important;
+        }
+        input[type="text"] {
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            width: 200px;
+        }
+        .submit-button {
+            background-color: darkgray;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Sam's app</h1>
+        <div>
+            <h2>Value 1: <span id="value1">{{ value1 }}</span></h2>
+            <h2>Value 2: <span id="value2">{{ value2 }}</span></h2>
+        </div>
+        <div>
+            <input type="text" id="value3" placeholder="Enter a value for Value 3" value="{{ value3 }}">
+            <button class="submit-button" onclick="submitValue()">Submit</button>
+        </div>
+        <div>
+            <button class="button {% if button1 == 1 %}button-active{% else %}button-inactive{% endif %}" id="button1" onclick="toggleButton('button1')">Button 1</button>
+            <button class="button {% if button2 == 1 %}button-active{% else %}button-inactive{% endif %}" id="button2" onclick="toggleButton('button2')">Button 2</button>
+            <button class="button {% if button3 == 1 %}button-active{% else %}button-inactive{% endif %}" id="button3" onclick="toggleButton('button3')">Button 3</button>
+            <button class="button {% if button4 == 1 %}button-active{% else %}button-inactive{% endif %}" id="button4" onclick="toggleButton('button4')">Button 4</button>
+        </div>
+        <div>
+            <p>By H. Rassi</p>
+        </div>
+    </div>
+
+    <script>
+        // Function to update Value 1, Value 2, and Value 3
+        function submitValue() {
+            var value3 = document.getElementById("value3").value;
+            document.getElementById("value1").innerText = '{{ value1 }}';
+            document.getElementById("value2").innerText = '{{ value2 }}';
+
+            // Update text file content
+            updateTextFile(value3);
+        }
+
+        // Function to toggle button states
+        function toggleButton(buttonId) {
+            var buttonElement = document.getElementById(buttonId);
+            var buttonState = buttonElement.classList.contains("button-active") ? 1 : 0;
+            buttonState = buttonState === 1 ? 0 : 1;
+            buttonElement.classList.toggle("button-active", buttonState === 1);
+            buttonElement.classList.toggle("button-inactive", buttonState === 0);
+
+            // Update text file content
+            updateTextFile();
+        }
+
+        // Function to update the content of the text file
+        function updateTextFile() {
+            var value3 = document.getElementById("value3").value;
+            var fileContent = '{{ value1 }}\n{{ value2 }}\n' + value3 + '\n' +
+                              (document.getElementById('button1').classList.contains('button-active') ? 1 : 0) + '\n' +
+                              (document.getElementById('button2').classList.contains('button-active') ? 1 : 0) + '\n' +
+                              (document.getElementById('button3').classList.contains('button-active') ? 1 : 0) + '\n' +
+                              (document.getElementById('button4').classList.contains('button-active') ? 1 : 0);
+
+            // Send the updated content to the server
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/update_sam', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        console.log('File updated successfully');
+                    } else {
+                        console.error('Failed to update file');
+                    }
+                }
+            };
+            xhr.send('content=' + encodeURIComponent(fileContent));
+        }
+    </script>
+    <script>
+        // Function to reload the page every 5 seconds
+        setInterval(function() {
+            location.reload();
+        }, 8000); // Reload every 5 seconds (5000 milliseconds)
+    </script>
+</body>
+</html>
