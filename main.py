@@ -1,6 +1,6 @@
 #for py3board 5 leds , 5 push buttons , 1 potentiometer and 3 slots:lcd,i2c,spi
-# hrassi.pythonanywhere.com acount with sam.txt file to store variables to control
-# py3board , with flask_app for mobile interface user https://hrassi.pythonanywhere.com
+# *****.pythonanywhere.com acount with sam.txt file to store variables to control
+# py3board , with flask_app for mobile interface user https://******.pythonanywhere.com
 
 import network
 import urequests
@@ -26,13 +26,13 @@ led4= Pin(26, Pin.OUT)
 sw1 = Pin(34, Pin.IN)
 
 #Your phone number in international format for callmebot whatsapp
-phone_number = '+9613386037'
+phone_number = '+9613******'
 #Your callmebot API key
-api_key = '2820168'
+api_key = '*******'
 
 # PythonAnywhere account details
-username = "Hrassi"
-api_token = "cb76ea0a0f27937aebe45b658cc05be0d58c3a50"
+username = "******"
+api_token = "cb76ea0a0f27937aeb********************"
 
 # URL for PythonAnywhere API
 api_url = "https://www.pythonanywhere.com/api/v0/user/{username}/files/path/home/{username}/sam.txt".format(
@@ -44,7 +44,7 @@ api_url = "https://www.pythonanywhere.com/api/v0/user/{username}/files/path/home
 def connect_to_internet():
     # enter wi-fi creds
     WIFI_NETWORK='Rassi_Net'
-    WIFI_PASSWORD='Nostercopernicamustambourino67'
+    WIFI_PASSWORD='********************'
 
     sta_if = network.WLAN(network.STA_IF)
     if not sta_if.isconnected():
@@ -203,12 +203,12 @@ while True:
         
         
         if (abs(oldvalue1 - value1 )) > 5 : #if the change is more than 5 unit then update sam.txt
-            url="https//hrassi.pythonanywhere.com/sensor1?value1="+str(value1)
+            url="https//******.pythonanywhere.com/sensor1?value1="+str(value1)
             print ("updating value1",value1)
             http_get(url)
 
         if oldvalue2 != value2 :
-            url="https//hrassi.pythonanywhere.com/sensor2?value2="+str(value2)
+            url="https//******.pythonanywhere.com/sensor2?value2="+str(value2)
             print ("updating value2",value2)
             http_get(url)
 
