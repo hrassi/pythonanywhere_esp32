@@ -16,7 +16,18 @@ then open console and make envirment called env3.9 and install python3.8 and fla
   mkvirtualenv --python=/usr/bin/python3.8 env3.9
   pip install flask
 
-  then python flask_app.py
+then create on pythonanywhere/***** a new directory called mysite where we put the
+flask_app.py file and inside mysite create also a new directory called templates where
+we put the index.html file
+
+upload index.html file to template dir and pythonanywhere.py to mysite directory
+
+
+https://*****.pythonanywhere.com  to access the sever
+
+then goto web tab in pythonanywere and create new app inside *****/mysite
+chose python3.8 and flask app
+then rename pythonanywhere.py to flask_app.py
 
 https://******.pythonanywhere.com  to access the sever
 
